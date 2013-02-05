@@ -100,7 +100,7 @@ function create_collection(info){
 		  path: "/api/v3.0/site/"+__SITE_ID+"/collection/create",
 		  port: '80',
 		  //This is the only line that is new. `headers` is an object with the headers to request
-		  headers: {'custom': 'Custom Header Demo works'}
+		  // headers: {'custom': 'Custom Header Demo works'}
 		};
 
 		callback = function(response) {
