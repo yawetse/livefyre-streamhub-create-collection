@@ -1,27 +1,58 @@
 var http = require('http'),
 	jwt  = require('jwt-simple'),
     argv = require('optimist')
-    	   .usage('Usage: $0 -net [network] -site [site id] -secret [site secret] -url [url base] -save [true/false]')
-    	   .demand(['net','site','secret','url'])
+    	   .usage('Usage: $0 -aid [article id] -title [title] -net [network] -site [site id] -secret [site secret] -url [url base] -save [true/false]')
+    	   .demand(['aid','title','net','site','secret','url'])
     	   .default('save', true)
+    	   .alias('aid','a')
+    	   .describe('aid','livefyre artcile id')
+    	   .alias('title','t')
+    	   .describe('title','livefyre collection title')
     	   .alias('net','n')
     	   .describe('net','livefyre network, ex: labs-t402.fyre.co')
     	   .alias('site','s')
     	   .describe('site','livefyre site id, ex: 303827')
-    	   .alias('secret','ss')
+    	   .alias('secret','k')
     	   .describe('secret','livefyre site secret, ex: [user token]')
     	   .alias('url','u')
     	   .describe('url','url base, ex: http://demos.livefyre.com/labs-t402/')
     	   .describe('save','create(true) test(false)')
     	   .argv;
 
-console.log("works")
+var __NETWORK = argv.net; //'labs-t402.fyre.co',
+	__SITE_ID = argv.site; //303827,
+	__SITE_SECRET = argv.secret; //'/=',
+	__URL_BASE = argv.url; //'http://demos.livefyre.com/labs-t402/',
+	__SAVE = argv.save; //true
 
-var __NETWORK = 'labs-t402.fyre.co',
-	__SITE_ID = 303827,
-	__SITE_SECRET = '/=',
-	__URL_BASE = 'http://demos.livefyre.com/labs-t402/',
-	__SAVE = true
+
+if( __NETWORK 
+	&& __SITE_ID 
+	&& __SITE_SECRET 
+	&& __URL_BASE 
+	&& __SAVE
+	&& argv.aid 
+	&& argv.title){
+
+	var collection_data = {
+		article_id: argv.aid,
+		title: argv.title
+	}
+
+	create_collection(collection_data)
+}
+else{
+	console.log("missing data")
+
+}
+// if __name__ == "__main__":
+// 	cols = [
+// 	("Media", "media_0")
+// 	]
+// 	col_objs = [dict(title=k, article_id=v) for (k,v) in cols]
+// 	create_collections(col_objs)
+
+
  
 function collection_meta_jwt(site_secret, article_id, title, url, tags){
     // Create JSON Obj
@@ -49,14 +80,14 @@ function create_collections(infos){
 function create_collection(info){
 	var article_id = info['article_id']
 	var title = info['title']
-	var url = URL_BASE + article_id
-	var meta_jwt = collection_meta_jwt(SITE_SECRET, article_id, title, url)
+	var url = __URL_BASE + article_id
+	var meta_jwt = collection_meta_jwt(__SITE_SECRET, article_id, title, url)
 	var format = 'json'
 	if(__SAVE){
-		post_url = "http://quill."+__NETWORK+"/api/v3.0/site/"+__SITE_ID+"/collection/create";
-		data_str = json.dumps({"collectionMeta": meta_jwt})
-		print ("Making request to {url} with data={data}".format(url=post_url, data=data_str))
-		resp = requests.post(post_url, data=data_str)
+		// post_url = "http://quill."+__NETWORK+"/api/v3.0/site/"+__SITE_ID+"/collection/create";
+		// data_str = json.dumps({"collectionMeta": meta_jwt})
+		// print ("Making request to {url} with data={data}".format(url=post_url, data=data_str))
+		// resp = requests.post(post_url, data=data_str)
 		// print "Response: {resp} {resptext}".format(
 		// 	resp=resp,
 		// 	resptext=resp.text)
@@ -93,11 +124,6 @@ function create_collection(info){
 	}
 }
  
-// if __name__ == "__main__":
-// 	cols = [
-// 	("Media", "media_0")
-// 	]
-// 	col_objs = [dict(title=k, article_id=v) for (k,v) in cols]
-// 	create_collections(col_objs)
+
 
 
