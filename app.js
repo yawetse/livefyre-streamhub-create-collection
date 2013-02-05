@@ -1,14 +1,26 @@
-var https = require('https'),
-	http = require('http'),
-	jwt = require('jwt-simple'),
-    argv = require('optimist').argv;
+var http = require('http'),
+	jwt  = require('jwt-simple'),
+    argv = require('optimist')
+    	   .usage('Usage: $0 -net [network] -site [site id] -secret [site secret] -url [url base] -save [true/false]')
+    	   .demand(['net','site','secret','url'])
+    	   .default('save', true)
+    	   .alias('net','n')
+    	   .describe('net','livefyre network, ex: labs-t402.fyre.co')
+    	   .alias('site','s')
+    	   .describe('site','livefyre site id, ex: 303827')
+    	   .alias('secret','ss')
+    	   .describe('secret','livefyre site secret, ex: [user token]')
+    	   .alias('url','u')
+    	   .describe('url','url base, ex: http://demos.livefyre.com/labs-t402/')
+    	   .describe('save','create(true) test(false)')
+    	   .argv;
 
 console.log("works")
 
 var __NETWORK = 'labs-t402.fyre.co',
 	__SITE_ID = 303827,
-	__SITE_SECRET = u'/=',
-	__URL_BASE = u'http://demos.livefyre.com/labs-t402/',
+	__SITE_SECRET = '/=',
+	__URL_BASE = 'http://demos.livefyre.com/labs-t402/',
 	__SAVE = true
  
 function collection_meta_jwt(site_secret, article_id, title, url, tags){
@@ -19,7 +31,7 @@ function collection_meta_jwt(site_secret, article_id, title, url, tags){
         url: url
     }
 
-    if tags{
+    if (tags){
         data['tags'] = tags
     }
  
@@ -45,9 +57,9 @@ function create_collection(info){
 		data_str = json.dumps({"collectionMeta": meta_jwt})
 		print ("Making request to {url} with data={data}".format(url=post_url, data=data_str))
 		resp = requests.post(post_url, data=data_str)
-		print "Response: {resp} {resptext}".format(
-			resp=resp,
-			resptext=resp.text)
+		// print "Response: {resp} {resptext}".format(
+		// 	resp=resp,
+		// 	resptext=resp.text)
 
 
 		var http = require('http');
@@ -73,8 +85,6 @@ function create_collection(info){
 
 		var req = http.request(options, callback);
 		req.end();
-
-
 	}
 	else{
 		console.log(
