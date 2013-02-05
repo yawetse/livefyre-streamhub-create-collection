@@ -1,0 +1,12 @@
+{
+  "name": "livefyre-collection-creator",
+  "version": "0.0.2",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "optimist": "*",
+    "jwt-simple": "*"
+  }
+}
