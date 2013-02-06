@@ -1,12 +1,12 @@
 {
   "name": "livefyre-collectionid-creator",
   "description":"quick way to create livefyre collection ids",
-  "keywords":["livefyre","colllectionid"]
+  "keywords":["livefyre","colllectionid"],
   "version": "0.1.0",
   "author": { "name" : "Yaw Joseph Etse"
   , "email" : "yaw.etse@gmail.com"
   , "url" : "http://about.me/yawjosephetse"
-  }
+  },
   "homepage": "https://github.com/yawetse/livefyre-streamhub-create-collection",
   "scripts": {
     "start": "node app.js"
