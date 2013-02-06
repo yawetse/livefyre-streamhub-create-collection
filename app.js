@@ -54,11 +54,9 @@ function collection_meta_jwt(site_secret, article_id, title, url, tags){
         title: title,
         url: url
     }
-
     if (tags){
         data['tags'] = tags
     }
-
     return jwt.encode(data, site_secret);
 }
 
