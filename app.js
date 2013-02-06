@@ -107,11 +107,6 @@ function create_collection(info){
         }
 
         var req = http.request(post_options, callback);
-        // req.write(post_data);
-        console.log("\r\n \r\n \r\n --testing json posting--")
-        console.log(JSON.stringify(post_data))
-        console.log("--end testing json posting-- \r\n \r\n \r\n")
-
         req.write(JSON.stringify(post_data))
         req.end();
     }
