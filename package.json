@@ -15,6 +15,7 @@
     "optimist": "*",
     "jwt-simple": "*"
   },
+  "engines": {"node": ">= 0.8.0"},
   "repository" :
   { "type" : "git",
     "url" : "http://github.com/yawetse/livefyre-streamhub-create-collection.git"
