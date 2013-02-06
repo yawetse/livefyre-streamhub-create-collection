@@ -2,7 +2,7 @@
   "name": "livefyre-collectionid-creator",
   "description":"quick way to create livefyre collection ids",
   "keywords":["livefyre","colllectionid"],
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": { "name" : "Yaw Joseph Etse"
   , "email" : "yaw.etse@gmail.com"
   , "url" : "http://about.me/yawjosephetse"
