@@ -77,7 +77,7 @@ function create_collection(info){
             url: __URL_BASE + info['article_id'],
             collectionMeta : collection_meta_jwt(__SITE_SECRET, info['article_id'], info['title'], __URL_BASE + info['article_id'])
         }
-    var post_data_string = querystring.stringify(post_data);
+    var post_data_string = JSON.stringify(post_data);
     var http = require('http');
     var post_options = {
               host: "quill."+__NETWORK,
