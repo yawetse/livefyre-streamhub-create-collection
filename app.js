@@ -22,7 +22,7 @@ var http = require('http'),
 
 
 var __NETWORK = argv.net; //'labs-t402.fyre.co',
-    __SITE_ID = argv.site[0]; //303827,
+    __SITE_ID = argv.site; //303827,
     __SITE_SECRET = argv.secret; //'/=',
     __URL_BASE = argv.url; //'http://demos.livefyre.com/labs-t402/',
     __SAVE = (argv.save == 'f' || argv.save == 'false' || argv.save == false ) ? false : true; //true
