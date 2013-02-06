@@ -16,7 +16,7 @@
     "jwt-simple": "*"
   },
   "repository" :
-  { "type" : "git", 
+  { "type" : "git",
     "url" : "http://github.com/yawetse/livefyre-streamhub-create-collection.git"
   }
 }
